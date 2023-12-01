@@ -1,50 +1,70 @@
 import React, { useEffect, useState } from 'react'
-
+import './Expense.css'
 const Expense = () => {
     
-    var data = "petrol"
     const [expense, setExpense] = useState({});
-
     const [expenseList, setExpenseList] = useState([]);
-
-    const handleOnChange = (e) => {
-        data = e.target.value;
-    }
     
     useEffect(()=>{
         const data = sessionStorage.getItem("Expense_List")
-
         setExpenseList(JSON.parse(data))
 
     },[])
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const makedata = [...expenseList, expense];
+        
+        if(expense.title==='' || expense.cost===''){
+            alert("eds")
+            return
+        }
+        
+        var makedata;
+        if(expenseList?.length>0){
+            makedata = [...expenseList, expense];
+        }else{
+            makedata = [expense]
+        }
         setExpenseList(makedata)
         sessionStorage.setItem("Expense_List",  JSON.stringify(makedata))
     }
 
 
   return (
-    <div>
+    <div className='expense-container'>
 
         <form onSubmit={handleSubmit}>
-            <input placeholder='title'  onChange={(e)=>setExpense({...expense, title:e.target.value})} /> <br/>
-            <input placeholder='amount' type='number' onChange={(e)=>setExpense({...expense, cost:e.target.value})}/> <br/>
-            <button onSubmit={handleSubmit}>Submit</button>
+            <label>Enter the Title</label>
+            <input placeholder='Title'  onChange={(e)=>setExpense({...expense, title:e.target.value})} /> <br/>
+            <label>Enter the Cost</label>
+            <input placeholder='Amount' type='number' onChange={(e)=>setExpense({...expense, cost:e.target.value})}/> <br/>
+            <button className='btn-primary' onSubmit={handleSubmit}>Submit</button>
         </form>
-        <br/>  
-        {expense.title} - {expense.cost}
+        <br/>
 
         <hr />
-        <h1>List data </h1>
-        {expenseList?.map((exp)=> <p>{exp.title} - {exp.cost}</p>)}
+        <br/>
 
-        {/* {data} */}
+        
+        <ol>   
+            <h2>Expense of the Month</h2>  
+            <br/>    
+            {expenseList?.map((exp, index)=> <Card key={index} title={exp.title} cost={exp.cost}/>)}
+        </ol>
+
 
     </div>
   )
 }
 
 export default Expense
+
+const Card = ({id, title, cost}) => {
+
+    return(
+        <li key={id}>
+            {title} - {cost}
+        </li>
+
+    );
+}

@@ -1,0 +1,9 @@
+.expense-container{
+    padding: 15px;
+}
+
+.expense-container input{
+    margin: 0;
+    margin-bottom: 10px;
+    width: 90%;
+}

@@ -1,13 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+import './assets/styles/_colors.css';
+import './assets/styles/_fonts.css';
+import './assets/styles/_styles.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter } from 'react-router-dom';
+import { DataProvider } from './context/DataContext';
+import { FunctionProvider } from './context/FunctionContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <DataProvider>
+        <FunctionProvider>
+          <App />
+        </FunctionProvider>        
+      </DataProvider>
+    </BrowserRouter>
+
   </React.StrictMode>
 );
 

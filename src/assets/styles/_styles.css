@@ -1,0 +1,17 @@
+.btn-primary{
+    padding: 10px 15px;
+    border: none;
+    color: var(--white);
+    background-color: var(--primary);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-primary:hover{
+    background-color: var(--secondary);
+}
+
+.disabled{
+    opacity: 0.5;
+    cursor: not-allowed;
+}

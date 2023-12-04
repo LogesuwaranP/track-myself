@@ -7,3 +7,28 @@
     margin-bottom: 10px;
     width: 90%;
 }
+
+.expense-card{
+    background-color: var(--white);
+    color: var(--black);
+}
+
+.expense-card td{
+    padding: 5px;
+}
+
+.expense-card tr{
+    border-radius: 3px 0 0 3px;
+}
+
+table{
+    width: 100%;
+}
+
+.expense-card td:first-child { 
+    border-radius: 5px 0 0 5px; 
+    text-align: center;
+}
+.expense-card td:last-child { 
+    border-radius: 0 5px 5px 0; 
+}

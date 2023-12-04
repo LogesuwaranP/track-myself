@@ -45,12 +45,18 @@ const Expense = () => {
         <hr />
         <br/>
 
+        <h2>Expense of the Month</h2>  
         
-        <ol>   
-            <h2>Expense of the Month</h2>  
-            <br/>    
-            {expenseList?.map((exp, index)=> <Card key={index} title={exp.title} cost={exp.cost}/>)}
-        </ol>
+        <table>    
+            {/* <thead>
+                <th>Index</th>
+                <th>Title</th>
+                <th>Cost</th>
+            </thead> */}
+            <tbody>
+                {expenseList?.map((exp, index)=> <Card id={index} title={exp.title} cost={exp.cost}/>)}
+            </tbody>
+        </table>
 
 
     </div>
@@ -62,9 +68,11 @@ export default Expense
 const Card = ({id, title, cost}) => {
 
     return(
-        <li key={id}>
-            {title} - {cost}
-        </li>
+        <tr key={id} className='expense-card'>
+            <td>{id+1}</td>
+            <td>{title}</td>
+            <td>&#x20b9; {cost}</td>
+        </tr>
 
     );
 }

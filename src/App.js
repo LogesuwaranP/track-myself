@@ -4,6 +4,8 @@ import { Routes, Route, useNavigate } from "react-router-dom"
 import Home from './pages/Home/Home';
 import Login from './components/Login/Login';
 import { useEffect } from 'react';
+import Navbar from './components/Navbar/Navbar';
+import Header from './components/Header/Header';
 
 function App() {
 
@@ -15,7 +17,7 @@ function App() {
   
   return (
     <div className="App">
-
+      <Header/>
       <Routes>
 
             {/* public routes */}
@@ -30,6 +32,8 @@ function App() {
 
 
         </Routes>
+
+      <Navbar/>
       
     </div>
   );
